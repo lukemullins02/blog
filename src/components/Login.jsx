@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { login } from "../services/authService";
+import { useAuth } from "../services/authProvider";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const { setToken } = useAuth();
+  const navigate = useNavigate();
+
   const [userInput, setUserInput] = useState({
     username: "",
     password: "",
@@ -14,10 +19,14 @@ function Login() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const response = await login({ ...userInput });
 
-    login({ ...userInput });
+    if (response.token) {
+      setToken(response.token);
+      navigate("/", { replace: true });
+    }
   };
 
   return (
