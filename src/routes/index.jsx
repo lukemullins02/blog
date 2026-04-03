@@ -3,6 +3,7 @@ import { useAuth } from "../services/authProvider";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Login from "../components/Login";
 import Posts from "../components/Posts";
+import ExpandPost from "../components/ExpandPost";
 
 const Routes = () => {
   const { token } = useAuth();
@@ -15,6 +16,10 @@ const Routes = () => {
         {
           path: "/",
           element: <Posts />,
+        },
+        {
+          path: "/:id",
+          element: <ExpandPost />,
         },
       ],
     },

@@ -1,21 +1,24 @@
-import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import api from "../api/axios";
+import { useState, useEffect } from "react";
 
-function Posts() {
-  const [posts, setPosts] = useState([]);
+function ExpandPost() {
+  const [post, setPost] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await api.get("/posts", {
+        const res = await api.get(`/posts/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
 
-        setPosts(res.data);
+        setPost(res.data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -24,17 +27,17 @@ function Posts() {
     };
 
     fetchPosts();
-  }, []);
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
+
   return (
-    <ul>
-      {posts.map((post) => (
-        <a href={`/${post.id}`}>{post.title}</a>
-      ))}
-    </ul>
+    <div>
+      <h1>{post.title}</h1>
+      <p>{post.blog}</p>
+    </div>
   );
 }
 
-export default Posts;
+export default ExpandPost;
