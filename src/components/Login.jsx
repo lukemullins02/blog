@@ -21,11 +21,20 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await login({ ...userInput });
 
-    if (response.token) {
-      setToken(response.token);
-      navigate("/", { replace: true });
+    try {
+      const response = await login({ ...userInput });
+
+      if (response.token) {
+        setToken(response.token);
+        navigate("/", { replace: true });
+      }
+    } catch (err) {
+      if (err.response) {
+        console.log(`Error: ${err.response.data.message}`);
+      } else {
+        console.log("Something went wrong. Please try again.");
+      }
     }
   };
 

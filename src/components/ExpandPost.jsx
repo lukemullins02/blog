@@ -24,13 +24,21 @@ function ExpandPost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await api.post(`/posts/${id}/comments`, userInput);
+    try {
+      const response = await api.post(`/posts/${id}/comments`, userInput);
 
-    console.log(response.data.text);
+      console.log(response.data.text);
 
-    setUserInput({ text: "" });
+      setUserInput({ text: "" });
 
-    setComments([...comments, response.data]);
+      setComments([...comments, response.data]);
+    } catch (err) {
+      if (err.response) {
+        console.log(`Error: ${err.response.data.message}`);
+      } else {
+        console.log("Something went wrong. Please try again.");
+      }
+    }
   };
 
   useEffect(() => {
