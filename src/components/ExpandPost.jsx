@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 function ExpandPost() {
   const [post, setPost] = useState([]);
+  const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -12,13 +13,20 @@ function ExpandPost() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await api.get(`/posts/${id}`, {
+        const resPost = await api.get(`/posts/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
 
-        setPost(res.data);
+        const resComment = await api.get(`/posts/${id}/comments`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        setComments(resComment.data);
+        setPost(resPost.data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -33,11 +41,21 @@ function ExpandPost() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <h4>{post.user.username}</h4>
-      <p>{post.blog}</p>
-    </div>
+    <>
+      <div>
+        <h1>{post.title}</h1>
+        <h4>{post.user.username}</h4>
+        <p>{post.blog}</p>
+      </div>
+      <div>
+        <h1>Comments</h1>
+        <ul>
+          {comments.map((comment) => (
+            <li key={comment.id}> {comment.text} </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
 

@@ -31,7 +31,7 @@ function Posts() {
   return (
     <ul>
       {posts.map((post) => (
-        <li>
+        <li key={post.id}>
           {" "}
           <a href={`/${post.id}`}>{post.title}</a>{" "}
         </li>
