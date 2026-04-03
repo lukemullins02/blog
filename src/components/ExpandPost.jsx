@@ -10,6 +10,33 @@ function ExpandPost() {
 
   const { id } = useParams();
 
+  const [userInput, setUserInput] = useState({
+    text: "",
+  });
+
+  const handleChange = (e) => {
+    setUserInput({
+      ...userInput,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await api.post(`/posts/${id}/comments`, userInput);
+
+    setUserInput({ text: "" });
+
+    const resComment = await api.get(`/posts/${id}/comments`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
+    setComments(resComment.data);
+  };
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -49,6 +76,24 @@ function ExpandPost() {
       </div>
       <div>
         <h1>Comments</h1>
+
+        <div>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="text">New Comment</label>
+              <input
+                value={userInput.text}
+                name="text"
+                id="text"
+                onChange={handleChange}
+                type="text"
+                required
+              />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
         <ul>
           {comments.map((comment) => (
             <li key={comment.id}> {comment.text} </li>

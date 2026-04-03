@@ -49,7 +49,7 @@ function Login() {
           name="password"
           id="password"
           onChange={handleChange}
-          type="text"
+          type="password"
           required
         />
       </div>
