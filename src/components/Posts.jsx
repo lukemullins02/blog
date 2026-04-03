@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import api from "../api/axios";
+import { getPosts } from "../services/postService";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -9,13 +9,9 @@ function Posts() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await api.get("/posts", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const response = await getPosts();
 
-        setPosts(res.data);
+        setPosts(response);
       } catch (err) {
         setError(err.message);
       } finally {

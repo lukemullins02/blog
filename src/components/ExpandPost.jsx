@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import api from "../api/axios";
 import { useState, useEffect } from "react";
+import { getComments, postComments } from "../services/commentService";
+import { getPost } from "../services/postService";
 
 function ExpandPost() {
   const [post, setPost] = useState([]);
@@ -25,13 +26,11 @@ function ExpandPost() {
     e.preventDefault();
 
     try {
-      const response = await api.post(`/posts/${id}/comments`, userInput);
-
-      console.log(response.data.text);
+      const response = await postComments(id, userInput);
 
       setUserInput({ text: "" });
 
-      setComments([...comments, response.data]);
+      setComments([...comments, response]);
     } catch (err) {
       if (err.response) {
         console.log(`Error: ${err.response.data.message}`);
@@ -44,20 +43,12 @@ function ExpandPost() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const resPost = await api.get(`/posts/${id}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const resPost = await getPost(id);
 
-        const resComment = await api.get(`/posts/${id}/comments`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const resComment = await getComments(id);
 
-        setComments(resComment.data);
-        setPost(resPost.data);
+        setComments(resComment);
+        setPost(resPost);
       } catch (err) {
         setError(err.message);
       } finally {

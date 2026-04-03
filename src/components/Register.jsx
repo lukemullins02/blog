@@ -1,6 +1,6 @@
-import api from "../api/axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { register } from "../services/authService";
 
 function Register() {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ function Register() {
     e.preventDefault();
 
     try {
-      await api.post("/register", userInput);
+      register(userInput);
 
       navigate("/login", { replace: true });
     } catch (err) {
