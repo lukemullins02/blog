@@ -31,7 +31,10 @@ function Posts() {
   return (
     <ul>
       {posts.map((post) => (
-        <a href={`/${post.id}`}>{post.title}</a>
+        <li>
+          {" "}
+          <a href={`/${post.id}`}>{post.title}</a>{" "}
+        </li>
       ))}
     </ul>
   );

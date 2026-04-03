@@ -27,7 +27,7 @@ function ExpandPost() {
     };
 
     fetchPosts();
-  });
+  }, [id]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -35,6 +35,7 @@ function ExpandPost() {
   return (
     <div>
       <h1>{post.title}</h1>
+      <h4>{post.user.username}</h4>
       <p>{post.blog}</p>
     </div>
   );
