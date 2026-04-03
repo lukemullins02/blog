@@ -24,17 +24,13 @@ function ExpandPost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await api.post(`/posts/${id}/comments`, userInput);
+    const response = await api.post(`/posts/${id}/comments`, userInput);
+
+    console.log(response.data.text);
 
     setUserInput({ text: "" });
 
-    const resComment = await api.get(`/posts/${id}/comments`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
-
-    setComments(resComment.data);
+    setComments([...comments, response.data]);
   };
 
   useEffect(() => {
@@ -80,7 +76,7 @@ function ExpandPost() {
         <div>
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="text">New Comment</label>
+              <label htmlFor="text">New Comment </label>
               <input
                 value={userInput.text}
                 name="text"
