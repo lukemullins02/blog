@@ -4,6 +4,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import Login from "../components/Login";
 import Posts from "../components/Posts";
 import ExpandPost from "../components/ExpandPost";
+import Register from "../components/Register";
 
 const Routes = () => {
   const { token } = useAuth();
@@ -29,6 +30,10 @@ const Routes = () => {
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/Register",
+      element: <Register />,
     },
   ];
 
