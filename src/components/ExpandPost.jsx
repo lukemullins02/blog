@@ -8,6 +8,7 @@ function ExpandPost() {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [errorComment, setErrorComment] = useState("");
 
   const { id } = useParams();
 
@@ -33,9 +34,10 @@ function ExpandPost() {
       setComments([...comments, response]);
     } catch (err) {
       if (err.response) {
-        console.log(`Error: ${err.response.data.message}`);
+        console.log(errorComment);
+        setErrorComment(err.response.data.message);
       } else {
-        console.log("Something went wrong. Please try again.");
+        setErrorComment("Something went wrong. Please try again.");
       }
     }
   };
@@ -74,6 +76,7 @@ function ExpandPost() {
 
         <div>
           <form onSubmit={handleSubmit}>
+            {errorComment && <p>{errorComment}</p>}
             <div>
               <label htmlFor="text">New Comment </label>
               <input

@@ -4,6 +4,7 @@ import { register } from "../services/authService";
 
 function Register() {
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   const [userInput, setUserInput] = useState({
     username: "",
@@ -22,19 +23,20 @@ function Register() {
     e.preventDefault();
 
     try {
-      register(userInput);
+      await register(userInput);
 
       navigate("/login", { replace: true });
     } catch (err) {
       if (err.response) {
-        console.log(`Error: ${err.response.data.message}`);
+        setError(err.response.data.message);
       } else {
-        console.log("Something went wrong. Please try again.");
+        setError("Something went wrong. Please try again.");
       }
     }
   };
   return (
     <form onSubmit={handleSubmit}>
+      {error && <p>{error}</p>}
       <div>
         <label htmlFor="username">Username </label>
         <input
