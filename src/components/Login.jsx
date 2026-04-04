@@ -47,7 +47,7 @@ function Login() {
         className="bg-[#1d3557] w-[50%] border-2 border-indigo-500 shadow-md rounded px-8 pt-8 pb-12 mb-4"
         onSubmit={handleSubmit}
       >
-        {error && <p>{error}</p>}
+        {error && <p className="text-xl text-red-600">{error}</p>}
         <div className="mb-4">
           <label
             className="block text-white text-lg font-bold mb-3"

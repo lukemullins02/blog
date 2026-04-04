@@ -14,6 +14,8 @@ function Posts() {
       try {
         const response = await getPosts();
 
+        console.log(response);
+
         setPosts(response);
       } catch (err) {
         setError(err.message);
@@ -49,6 +51,12 @@ function Posts() {
             onClick={() => navigate(`/${post.id}`)}
           >
             {post.title}
+            <p className="text-lg mt-4">{post.user.username}</p>
+            <p className="text-lg mt-4">
+              {post.uploadAt
+                ? new Date(post.uploadAt).toLocaleDateString("en-US")
+                : "No date available"}
+            </p>
           </li>
         ))}
       </ul>
