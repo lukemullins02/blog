@@ -77,7 +77,7 @@ function ExpandPost() {
         <p className="text-xl mb-4 p-4">{post.blog}</p>
       </div>
       <div className="w-full text-white flex flex-col  mt-7">
-        <h1 className="text-4xl mb-4 ml-2">Comments</h1>
+        <h1 className="text-4xl mb-4 ml-10">Comments</h1>
         <div className="w-full flex flex-col items-center">
           <form onSubmit={handleSubmit}>
             {errorComment && <p>{errorComment}</p>}
@@ -107,15 +107,27 @@ function ExpandPost() {
           {comments.map((comment) => (
             <li
               className="
-  w-[50%] border text-center text-2xl text-white border-indigo-500
+  w-[30%] border  text-2xl text-white border-indigo-500
   shadow-md rounded px-2 pt-2 pb-4 mb-7
   transform transition duration-300 ease-in-out
 
   "
               key={comment.id}
             >
-              {" "}
-              {comment.text}{" "}
+              <p className="text-xl mt-1">
+                {comment.user.username}{" "}
+                <span className="text-base text-gray-400">
+                  {" "}
+                  {comment.uploadAt
+                    ? new Date(comment.uploadAt).toLocaleString("en-US", {
+                        month: "2-digit",
+                        day: "2-digit",
+                        year: "numeric",
+                      })
+                    : "No date available"}
+                </span>
+              </p>
+              {comment.text}
             </li>
           ))}
         </ul>
