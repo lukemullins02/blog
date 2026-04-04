@@ -35,43 +35,80 @@ function Register() {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      {error && <p>{error}</p>}
-      <div>
-        <label htmlFor="username">Username </label>
-        <input
-          value={userInput.username}
-          name="username"
-          id="username"
-          onChange={handleChange}
-          type="text"
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password </label>
-        <input
-          value={userInput.password}
-          name="password"
-          id="password"
-          onChange={handleChange}
-          type="password"
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="confirmPassword">Confirm Password </label>
-        <input
-          value={userInput.confirmPassword}
-          name="confirmPassword"
-          id="confirmPassword"
-          onChange={handleChange}
-          type="password"
-          required
-        />
-      </div>
-      <button type="submit">Register</button>
-    </form>
+    <div className="w-screen h-screen bg-[#1d3557]  flex flex-col items-center">
+      <p className="text-white text-6xl mb-10 mt-10">Register</p>
+      <form
+        className="bg-[#1d3557] w-[50%] border-2 border-indigo-500 shadow-md rounded px-8 pt-8 pb-12 mb-4"
+        onSubmit={handleSubmit}
+      >
+        {error && <p>{error}</p>}
+        <div className="mb-4">
+          <label
+            className="block text-white text-lg font-bold mb-3"
+            htmlFor="username"
+          >
+            Username{" "}
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            value={userInput.username}
+            name="username"
+            id="username"
+            onChange={handleChange}
+            type="text"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-white text-lg font-bold mb-3"
+            htmlFor="password"
+          >
+            Password{" "}
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            value={userInput.password}
+            name="password"
+            id="password"
+            onChange={handleChange}
+            type="password"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-white text-lg font-bold mb-3"
+            htmlFor="confirmPassword"
+          >
+            Confirm Password{" "}
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            value={userInput.confirmPassword}
+            name="confirmPassword"
+            id="confirmPassword"
+            onChange={handleChange}
+            type="password"
+            required
+          />
+        </div>
+        <div className="flex items-center justify-center mt-8">
+          <button
+            className="inline-flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Sign Up
+          </button>
+          <a
+            href="/login"
+            className="inline-flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Login
+          </a>
+        </div>
+      </form>
+    </div>
   );
 }
 
