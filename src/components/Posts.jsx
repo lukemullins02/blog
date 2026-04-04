@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { getPosts } from "../services/postService";
 import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
 
 function Posts() {
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -26,17 +28,30 @@ function Posts() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   return (
-    <>
+    <div className="h-screen w-screen bg-[#1d3557]">
       <Navbar />
-      <ul>
+
+      <ul className="w-full flex flex-col items-center mt-7">
         {posts.map((post) => (
-          <li key={post.id}>
-            {" "}
-            <a href={`/${post.id}`}>{post.title}</a>{" "}
+          <li
+            className="
+  w-[50%] border-2 text-center text-4xl text-white border-indigo-500
+  shadow-md rounded px-8 pt-8 pb-12 mb-7
+  transform transition duration-300 ease-in-out
+  hover:bg-indigo-500/20
+  hover:scale-105
+  hover:shadow-xl
+  hover:text-gray-300
+  hover:cursor-pointer
+"
+            key={post.id}
+            onClick={() => navigate(`/${post.id}`)}
+          >
+            {post.title}
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
 
