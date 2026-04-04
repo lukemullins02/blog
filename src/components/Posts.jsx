@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getPosts } from "../services/postService";
+import Navbar from "./Navbar";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -25,14 +26,17 @@ function Posts() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   return (
-    <ul>
-      {posts.map((post) => (
-        <li key={post.id}>
-          {" "}
-          <a href={`/${post.id}`}>{post.title}</a>{" "}
-        </li>
-      ))}
-    </ul>
+    <>
+      <Navbar />
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>
+            {" "}
+            <a href={`/${post.id}`}>{post.title}</a>{" "}
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
 

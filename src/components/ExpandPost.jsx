@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getComments, postComments } from "../services/commentService";
 import { getPost } from "../services/postService";
+import Navbar from "./Navbar";
 
 function ExpandPost() {
   const [post, setPost] = useState([]);
@@ -66,6 +67,7 @@ function ExpandPost() {
 
   return (
     <>
+      <Navbar />
       <div>
         <h1>{post.title}</h1>
         <h4>{post.user.username}</h4>
