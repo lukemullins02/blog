@@ -66,22 +66,24 @@ function ExpandPost() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <>
+    <div className="h-screen w-screen bg-[#1d3557]">
+      {" "}
       <Navbar />
-      <div>
-        <h1>{post.title}</h1>
-        <h4>{post.user.username}</h4>
-        <p>{post.blog}</p>
+      <div className="w-full flex flex-col items-center mt-7 text-white">
+        <h1 className="text-5xl mb-4">{post.title}</h1>
+        <h4 className="text-2xl mb-4 text-gray-300">
+          By: {post.user.username}
+        </h4>
+        <p className="text-xl mb-4 p-4">{post.blog}</p>
       </div>
-      <div>
-        <h1>Comments</h1>
-
-        <div>
+      <div className="w-full text-white flex flex-col  mt-7">
+        <h1 className="text-4xl mb-4 ml-2">Comments</h1>
+        <div className="w-full flex flex-col items-center">
           <form onSubmit={handleSubmit}>
             {errorComment && <p>{errorComment}</p>}
-            <div>
-              <label htmlFor="text">New Comment </label>
+            <div className=" flex flex-col">
               <input
+                className="shadow appearance-none border rounded  py-2 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 value={userInput.text}
                 name="text"
                 id="text"
@@ -90,17 +92,35 @@ function ExpandPost() {
                 required
               />
             </div>
-            <button type="submit">Submit</button>
+            <div className="flex items-center justify-center mb-4">
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              >
+                Add Comment
+              </button>
+            </div>
           </form>
         </div>
 
-        <ul>
+        <ul className="w-full flex flex-col items-center mt-4">
           {comments.map((comment) => (
-            <li key={comment.id}> {comment.text} </li>
+            <li
+              className="
+  w-[50%] border text-center text-2xl text-white border-indigo-500
+  shadow-md rounded px-2 pt-2 pb-4 mb-7
+  transform transition duration-300 ease-in-out
+
+  "
+              key={comment.id}
+            >
+              {" "}
+              {comment.text}{" "}
+            </li>
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 }
 
