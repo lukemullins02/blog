@@ -14,9 +14,11 @@ function Posts() {
       try {
         const response = await getPosts();
 
-        console.log(response);
+        const filterResponse = response.filter(
+          (post) => post.isPublished === true,
+        );
 
-        setPosts(response);
+        setPosts(filterResponse);
       } catch (err) {
         setError(err.message);
       } finally {
