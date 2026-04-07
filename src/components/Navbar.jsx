@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="bg-[#1d3557] p-1.5 border-b-2 border-indigo-500 ">
+    <nav className="bg-[#1d3557] p-1.5 border-b-2  border-indigo-500 ">
       <ul className="flex justify-end space-x-4">
         <li>
           <Link

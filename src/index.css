@@ -81,13 +81,6 @@ h6 {
 }
 
 /* Project CSS */
-.roboto-text {
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
-}
 
 body {
   background-color: rgb(244, 244, 244);

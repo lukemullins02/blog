@@ -35,7 +35,7 @@ function Register() {
     }
   };
   return (
-    <div className="w-screen h-screen bg-[#1d3557]  flex flex-col items-center">
+    <div className="w-screen h-screen  bg-[#1d3557]  flex flex-col items-center">
       <p className="text-white text-6xl mb-10 mt-10">Register</p>
       <form
         className="bg-[#1d3557] w-[50%] border-2 border-indigo-500 shadow-md rounded px-8 pt-8 pb-12 mb-4"

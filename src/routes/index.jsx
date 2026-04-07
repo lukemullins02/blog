@@ -20,12 +20,16 @@ const Routes = () => {
           element: <Posts />,
         },
         {
-          path: "/:id",
+          path: "/posts/:id",
           element: <ExpandPost />,
         },
         {
           path: "/logout",
           element: <Logout />,
+        },
+        {
+          path: "*",
+          element: <h1>Invalid Route</h1>,
         },
       ],
     },

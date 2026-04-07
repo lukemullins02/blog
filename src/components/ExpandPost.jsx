@@ -66,7 +66,7 @@ function ExpandPost() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="h-screen w-screen bg-[#1d3557]">
+    <div className="min-h-screen w-screen  bg-[#1d3557]">
       {" "}
       <Navbar />
       <div className="w-full flex flex-col items-center mt-7 text-white">

@@ -30,7 +30,7 @@ function Posts() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   return (
-    <div className="h-screen w-screen bg-[#1d3557]">
+    <div className="min-h-screen w-screen  bg-[#1d3557]">
       <Navbar />
       <h1 className="text-white text-5xl mt-4 text-center ">Articles</h1>
 
@@ -48,7 +48,7 @@ function Posts() {
   hover:cursor-pointer
 "
             key={post.id}
-            onClick={() => navigate(`/${post.id}`)}
+            onClick={() => navigate(`/posts/${post.id}`)}
           >
             {post.title}
             <p className="text-lg mt-4">{post.user.username}</p>
