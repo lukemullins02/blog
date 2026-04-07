@@ -28,11 +28,13 @@ function ExpandPost() {
     e.preventDefault();
 
     try {
-      const response = await postComments(id, userInput);
+      await postComments(id, userInput);
 
       setUserInput({ text: "" });
 
-      setComments([...comments, response]);
+      const response = await getComments(id);
+
+      setComments([...response]);
     } catch (err) {
       if (err.response) {
         console.log(errorComment);
