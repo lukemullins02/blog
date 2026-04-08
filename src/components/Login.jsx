@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { login } from "../services/authService";
 import { useAuth } from "../provider/authProvider";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
   const { setToken } = useAuth();
@@ -90,12 +90,12 @@ function Login() {
             Sign In
           </button>
 
-          <a
-            href="/register"
+          <Link
+            to="/register"
             className="inline-flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-4 rounded focus:outline-none focus:shadow-outline"
           >
             Register
-          </a>
+          </Link>
         </div>
       </form>
     </div>

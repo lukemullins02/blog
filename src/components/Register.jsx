@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { register } from "../services/authService";
 
 function Register() {
@@ -100,12 +100,12 @@ function Register() {
           >
             Sign Up
           </button>
-          <a
-            href="/login"
+          <Link
+            to="/login"
             className="inline-flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-4 rounded focus:outline-none focus:shadow-outline"
           >
             Login
-          </a>
+          </Link>
         </div>
       </form>
     </div>
