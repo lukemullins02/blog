@@ -44,6 +44,10 @@ const Routes = () => {
       path: "/register",
       element: <Register />,
     },
+    {
+      path: "*",
+      element: <h1>Invalid Route</h1>,
+    },
   ];
 
   const router = createBrowserRouter([
