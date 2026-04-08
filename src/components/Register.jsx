@@ -50,7 +50,7 @@ function Register() {
             Username{" "}
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow bg-[#1d3557] appearance-none text-white border border-indigo-500 rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
             value={userInput.username}
             name="username"
             id="username"
@@ -67,7 +67,7 @@ function Register() {
             Password{" "}
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow bg-[#1d3557] appearance-none text-white border border-indigo-500 rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
             value={userInput.password}
             name="password"
             id="password"
@@ -84,7 +84,7 @@ function Register() {
             Confirm Password{" "}
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow bg-[#1d3557] appearance-none text-white border border-indigo-500 rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
             value={userInput.confirmPassword}
             name="confirmPassword"
             id="confirmPassword"
