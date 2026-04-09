@@ -81,8 +81,13 @@ function ExpandPost() {
       <div className="w-full text-white flex flex-col  mt-7">
         <h1 className="text-4xl mb-4 ml-10">Comments</h1>
         <div className="w-full flex flex-col items-center">
-          <form className="w-full" onSubmit={handleSubmit}>
-            {errorComment && <p>{errorComment}</p>}
+          <form
+            className="w-full flex flex-col items-center"
+            onSubmit={handleSubmit}
+          >
+            {errorComment && (
+              <p className="text-xl text-red-600 ">{errorComment}</p>
+            )}
             <div className="flex flex-col items-center w-full">
               <textarea
                 className="w-[30%] min-h-36 mt-3 mb-3 text-xl bg-[#1d3557] text-white p-3 rounded border border-gray-400 focus:outline-none"
@@ -129,7 +134,9 @@ function ExpandPost() {
                     : "No date available"}
                 </span>
               </p>
-              {comment.text}
+              <p className="mt-3 text-2xl wrap-break-word  whitespace-pre-wrap">
+                {comment.text}
+              </p>
             </li>
           ))}
         </ul>
