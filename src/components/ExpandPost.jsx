@@ -76,7 +76,7 @@ function ExpandPost() {
         <h4 className="text-2xl mb-4 text-gray-300">
           By: {post.user.username}
         </h4>
-        <p className="text-xl mb-4 p-4">{post.blog}</p>
+        <p className="text-2xl mb-4 p-6">{post.blog}</p>
       </div>
       <div className="w-full text-white flex flex-col  mt-7">
         <h1 className="text-4xl mb-4 ml-10">Comments</h1>
