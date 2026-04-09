@@ -81,11 +81,11 @@ function ExpandPost() {
       <div className="w-full text-white flex flex-col  mt-7">
         <h1 className="text-4xl mb-4 ml-10">Comments</h1>
         <div className="w-full flex flex-col items-center">
-          <form onSubmit={handleSubmit}>
+          <form className="w-full" onSubmit={handleSubmit}>
             {errorComment && <p>{errorComment}</p>}
-            <div className=" flex flex-col">
-              <input
-                className="shadow appearance-none border rounded  py-2 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            <div className="flex flex-col items-center w-full">
+              <textarea
+                className="w-[30%] min-h-36 mt-3 mb-3 text-xl bg-[#1d3557] text-white p-3 rounded border border-gray-400 focus:outline-none"
                 value={userInput.text}
                 name="text"
                 id="text"
