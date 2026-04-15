@@ -37,7 +37,7 @@ function Posts() {
 
       <ul className="w-full flex flex-col items-center mt-7">
         {posts.map((post) => (
-          <Post post={post} />
+          <Post key={post.id} post={post} />
         ))}
       </ul>
     </div>

@@ -14,7 +14,6 @@ function Post({ post }) {
   hover:text-gray-300
   hover:cursor-pointer
 "
-      key={post.id}
       onClick={() => navigate(`/posts/${post.id}`)}
     >
       {post.title}
