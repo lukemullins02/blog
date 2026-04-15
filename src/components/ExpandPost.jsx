@@ -65,8 +65,8 @@ function ExpandPost() {
     fetchPosts();
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <p className="text-white text-xl pl-4">Loading...</p>;
+  if (error) return <p className="text-red-600 text-xl pl-4">Error: {error}</p>;
 
   return (
     <div className="min-h-screen w-screen  bg-[#1d3557]">
