@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getComments, postComments } from "../services/commentService";
 import { getPost } from "../services/postService";
-import CommentForm from "./forms/commentForm";
+import CommentForm from "./forms/CommentForm";
 import Comment from "./templates/Comment";
 import Navbar from "./Navbar";
 
